@@ -1,0 +1,9 @@
+nbproject/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+.nb-gradle/
+node_modules/
+bower_components/
