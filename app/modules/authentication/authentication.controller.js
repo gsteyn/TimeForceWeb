@@ -3,19 +3,19 @@
 angular.module('timeForceApp.Authentication')
   
 .controller('LoginCtrl',
-    ['$scope', '$rootScope', '$location', 'AuthenticationService',
-    function ($scope, $rootScope, $location, AuthenticationService) {
+    ['$scope', '$rootScope', '$location', 'AuthenticationService', 'FlashMessageService',
+    function ($scope, $rootScope, $location, AuthenticationService, FlashMessageService) {
         // reset login status
-        AuthenticationService.ClearCredentials();
+        AuthenticationService.clearCredentials();
   
         $scope.login = function () {
             $scope.dataLoading = true;
-            AuthenticationService.Login($scope.username, $scope.password, function(response) {
+            AuthenticationService.login($scope.username, $scope.password, function(response) {
                 if(response.success) {
-                    AuthenticationService.SetCredentials($scope.username, $scope.password);
+                    AuthenticationService.setCredentials($scope.username, $scope.password);
                     $location.path('/');
                 } else {
-                    $scope.error = response.message;
+                    FlashMessageService.error(response.message);
                     $scope.dataLoading = false;
                 }
             });

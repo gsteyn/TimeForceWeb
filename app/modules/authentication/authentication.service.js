@@ -7,7 +7,7 @@ angular.module('timeForceApp.Authentication')
     function (Base64, $http, $cookieStore, $rootScope, $timeout) {
         var service = {};
  
-        service.Login = function (username, password, callback) {
+        service.login = function (username, password, callback) {
  
             /* Dummy authentication for testing, uses $timeout to simulate api call
              ----------------------------------------------*/
@@ -29,7 +29,7 @@ angular.module('timeForceApp.Authentication')
  
         };
   
-        service.SetCredentials = function (username, password) {
+        service.setCredentials = function (username, password) {
             var authdata = Base64.encode(username + ':' + password);
   
             $rootScope.globals = {
@@ -43,7 +43,7 @@ angular.module('timeForceApp.Authentication')
             $cookieStore.put('globals', $rootScope.globals);
         };
   
-        service.ClearCredentials = function () {
+        service.clearCredentials = function () {
             $rootScope.globals = {};
             $cookieStore.remove('globals');
             $http.defaults.headers.common.Authorization = 'Basic ';

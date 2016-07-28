@@ -26,6 +26,7 @@
         <div class="jumbotron">
             <div class="container">
                 <div class="col-sm-8 col-sm-offset-2">
+                    <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message"></div>
                     <div ng-view></div>
                 </div>
             </div>
@@ -41,6 +42,7 @@
         <script src="bower_components/angular/angular.js"></script>
         <script src="bower_components/angular-route/angular-route.js"></script>
         <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+        <script src="bower_components/angular-resource/angular-resource.js"></script>
         
         <script src="modules/app.module.js"></script>
 
@@ -54,8 +56,16 @@
         <script src="modules/authentication/authentication.service.js"></script>
         <script src="modules/authentication/authentication.controller.js"></script>
         
+        <!-- registration -->
+        <script src="modules/registration/registration.module.js"></script>
+        <script src="modules/registration/registration.controller.js"></script>
+        
         <!-- home -->
         <script src="modules/home/home.module.js"></script>
         <script src="modules/home/home.controller.js"></script>
+        
+        <!-- services -->
+        <script src="modules/services/user.service.js"></script>
+        <script src="modules/services/flashmessage.service.js"></script>
     </body>
 </html>
